@@ -28,7 +28,7 @@ const SignUp = () => {
     };
     useEffect(()=>{
      if (user || gUser) {
-       navigate("/appointment");
+       navigate("/");
      }
     },[user,gUser,navigate])
   if (loading || updating || gLoading) {
