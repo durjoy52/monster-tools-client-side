@@ -6,8 +6,8 @@ const Summery = () => {
     return (
         <div className='mb-6'>
             <div className="text-center">
-            <h2 className='text-5xl font-bold uppercase'>Millions of people trust us</h2>
-            <h3 className='text-2xl text-purple-400 uppercase'>Try to understand buyer expectation</h3>
+            <h2 className='text-4xl font-bold uppercase'>Millions of people trust us</h2>
+            <h3 className='text-2xl text-red-600 uppercase'>Try to understand buyer expectation</h3>
             </div>
             <div className="divider"></div>
             <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-3">
