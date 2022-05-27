@@ -4,7 +4,7 @@ import { FiDollarSign } from 'react-icons/fi';
 import peoples from '../../assets/logo/peoples.png';
 const Summery = () => {
     return (
-        <div className='mb-3'>
+        <div className='mb-6'>
             <div className="text-center">
             <h2 className='text-5xl font-bold uppercase'>Millions of people trust us</h2>
             <h3 className='text-2xl text-purple-400 uppercase'>Try to understand buyer expectation</h3>
