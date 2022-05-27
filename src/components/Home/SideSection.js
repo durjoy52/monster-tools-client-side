@@ -1,14 +1,15 @@
 import React from 'react';
-
+import { RiArrowRightSLine } from 'react-icons/ri';
+import sideImg from '../../assets/sideImg.jpg';
 const SideSection = () => {
     return (
-        <div class="hero my-6">
-  <div class="hero-content flex-col lg:flex-row-reverse">
-    <img src="https://api.lorem.space/image/movie?w=260&h=400" class="max-w-sm rounded-lg shadow-2xl" />
+        <div className="hero my-6">
+  <div className="hero-content flex-col lg:flex-row-reverse">
+    <img src={sideImg} className="max-w-xl rounded-lg shadow-2xl" alt='' />
     <div>
-      <h1 class="text-5xl font-bold">Box Office News!</h1>
-      <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-      <button class="btn btn-primary">Get Started</button>
+      <h1 className="text-5xl font-bold uppercase">Reliable and professional</h1>
+      <p className="py-6">We are manufacturing products with world className quality.Supplying the world with high quality vehicle tools.</p>
+      <button className="btn btn-success text-white">Read More <RiArrowRightSLine className='text-xl'/></button>
     </div>
   </div>
 </div>

@@ -26,7 +26,7 @@ const Reviews = () => {
             <BsStarHalf />
           </div>
         </div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.🤗</p>
+        <p>I am happy with this service.Perfect delivery process.🤗</p>
       </div>
     </div>
         <div class="card max-w-lg bg-base-100 shadow-xl">
@@ -46,7 +46,7 @@ const Reviews = () => {
             <BsStar/>
           </div>
         </div>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.👍</p>
+        <p>It was easy to purchase.Product quality is really good👍</p>
       </div>
     </div>
         <div class="card max-w-lg bg-base-100 shadow-xl">
@@ -66,7 +66,7 @@ const Reviews = () => {
             <BsStarHalf />
           </div>
         </div>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores cum necessitatibus impedit error nisi expedita.👌</p>
+        <p>Best quality with an affordable price.I found every vehicles tools that I needed.👌</p>
       </div>
     </div>
     </div>

@@ -93,7 +93,7 @@ const Login = () => {
                 {signInError}
                 <input className='btn btn-primary w-full max-w-xs text-white' type="submit" value="Login" />
             </form>
-            <p><small>New to Doctors Portal <Link className='text-primary' to="/signup">Create New Account</Link></small></p>
+            <p><small>New to Monster Tools? <Link className='text-primary' to="/signup">Create New Account</Link></small></p>
             <SocialLogin signInWithGoogle={signInWithGoogle}/>
         </div>
     </div>
