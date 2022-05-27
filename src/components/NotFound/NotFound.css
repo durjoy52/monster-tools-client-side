@@ -1,0 +1,26 @@
+.page {
+  height: 80vh;
+  background-color: #ecf0f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.notfound-page {
+  max-width: 600px;
+  padding: 5px;
+  height: 400px;
+  text-align: center;
+  background-color: #fff;
+}
+.notfound-page div h1 {
+  font-size: 10rem;
+  color: red;
+}
+
+.btn404 {
+  background-color: #294f75;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
