@@ -14,7 +14,7 @@ const Reviews = () => {
         <div className="flex justify-between">
           <div class="avatar">
             <div class="w-12 rounded-full mr-2">
-              <img src="https://api.lorem.space/image/face?hash=91831" />
+              <img src="https://api.lorem.space/image/face?hash=91831"alt='' />
             </div>
             <span className="font-bold">J.K Rowling</span>
           </div>
@@ -34,7 +34,7 @@ const Reviews = () => {
         <div className="flex justify-between">
           <div class="avatar">
             <div class="w-12 rounded-full mr-2">
-              <img src="https://api.lorem.space/image/face?hash=53273" />
+              <img src="https://api.lorem.space/image/face?hash=53273" alt="" />
             </div>
             <span className="font-bold">blake jane</span>
           </div>
@@ -54,7 +54,7 @@ const Reviews = () => {
         <div className="flex justify-between">
           <div class="avatar">
             <div class="w-12 rounded-full mr-2">
-              <img src="https://api.lorem.space/image/face?hash=26448" />
+              <img src="https://api.lorem.space/image/face?hash=26448" alt="" />
             </div>
             <span className="font-bold">jack sparrow</span>
           </div>

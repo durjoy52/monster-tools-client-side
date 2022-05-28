@@ -7,7 +7,7 @@ import TeamMember from './TeamMember';
 
 const Home = () => {
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto p-2'>
            <Banner/>
            <TeamMember/>
            <Reviews/>

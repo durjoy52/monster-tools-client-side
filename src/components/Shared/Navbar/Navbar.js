@@ -15,6 +15,7 @@ const Navbar = ({children}) => {
           {
             user?<li><NavLink onClick={logout} to='/login'>Sign Out</NavLink></li>:<li><NavLink to='/login'>Login</NavLink></li>
           }
+          <li><NavLink to='/blogs'>Blogs</NavLink></li>
   </>
     return (
       <div class="drawer">
