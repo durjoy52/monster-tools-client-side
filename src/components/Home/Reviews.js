@@ -9,11 +9,11 @@ const Reviews = () => {
         <button className="text-2xl bg-black text-white px-6 py-4 mt-2">Client Says</button>
         </div>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-2 justify-items-center mb-3">
-        <div class="card max-w-lg bg-base-100 shadow-xl">
-      <div class="card-body">
+        <div className="card max-w-lg bg-base-100 shadow-xl">
+      <div className="card-body">
         <div className="flex justify-between">
-          <div class="avatar">
-            <div class="w-12 rounded-full mr-2">
+          <div className="avatar">
+            <div className="w-12 rounded-full mr-2">
               <img src="https://api.lorem.space/image/face?hash=91831"alt='' />
             </div>
             <span className="font-bold">J.K Rowling</span>
@@ -29,11 +29,11 @@ const Reviews = () => {
         <p>I am happy with this service.Perfect delivery process.🤗</p>
       </div>
     </div>
-        <div class="card max-w-lg bg-base-100 shadow-xl">
-      <div class="card-body">
+        <div className="card max-w-lg bg-base-100 shadow-xl">
+      <div className="card-body">
         <div className="flex justify-between">
-          <div class="avatar">
-            <div class="w-12 rounded-full mr-2">
+          <div className="avatar">
+            <div className="w-12 rounded-full mr-2">
               <img src="https://api.lorem.space/image/face?hash=53273" alt="" />
             </div>
             <span className="font-bold">blake jane</span>
@@ -49,11 +49,11 @@ const Reviews = () => {
         <p>It was easy to purchase.Product quality is really good👍</p>
       </div>
     </div>
-        <div class="card max-w-lg bg-base-100 shadow-xl">
-      <div class="card-body">
+        <div className="card max-w-lg bg-base-100 shadow-xl">
+      <div className="card-body">
         <div className="flex justify-between">
-          <div class="avatar">
-            <div class="w-12 rounded-full mr-2">
+          <div className="avatar">
+            <div className="w-12 rounded-full mr-2">
               <img src="https://api.lorem.space/image/face?hash=26448" alt="" />
             </div>
             <span className="font-bold">jack sparrow</span>

@@ -10,24 +10,24 @@ const TeamMember = () => {
                 <h2 className='text-2xl uppercase font-bold'>Our dedicated team member</h2>
             </div>
             <div className='grid lg:grid-cols-3 md:grid-cols-2'>
-            <div class="card rounded-none card-compact lg:w-96 bg-base-100 shadow-xl">
+            <div className="card rounded-none card-compact lg:w-96 bg-base-100 shadow-xl">
   <figure><img src={developer} alt="john" /></figure>
-  <div class="card-body">
-    <h2 class="text-xl text-center">John Snow</h2>
+  <div className="card-body">
+    <h2 className="text-xl text-center">John Snow</h2>
     <p className='text-center text-secondary'>Developer</p>
   </div>
 </div>
-            <div class="card rounded-none card-compact lg:w-96 bg-base-100 shadow-xl">
+            <div className="card rounded-none card-compact lg:w-96 bg-base-100 shadow-xl">
   <figure><img src={manager} alt="taryan" /></figure>
-  <div class="card-body">
-    <h2 class="text-xl text-center">taryan lannister </h2>
+  <div className="card-body">
+    <h2 className="text-xl text-center">taryan lannister </h2>
     <p className='text-center text-secondary'>Manager</p>
   </div>
 </div>
-            <div class="card rounded-none card-compact lg:w-96 bg-base-100 shadow-xl">
+            <div className="card rounded-none card-compact lg:w-96 bg-base-100 shadow-xl">
   <figure><img src={developer1} alt="eddard" /></figure>
-  <div class="card-body">
-    <h2 class="text-xl text-center">Eddard stark</h2>
+  <div className="card-body">
+    <h2 className="text-xl text-center">Eddard stark</h2>
     <p className='text-center text-secondary'>Developer</p>
   </div>
 </div>
