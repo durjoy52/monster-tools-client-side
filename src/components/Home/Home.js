@@ -1,4 +1,5 @@
 import React from 'react';
+import Products from '../Products/Products';
 import Banner from './Banner';
 import Reviews from './Reviews';
 import SideSection from './SideSection';
@@ -9,6 +10,7 @@ const Home = () => {
     return (
         <div className='container mx-auto p-2'>
            <Banner/>
+           <Products/>
            <TeamMember/>
            <Reviews/>
            <SideSection/>

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Wrenches",
+    "img": "https://miro.medium.com/max/1400/1*jBVnCc8Q0k37dhp9mHiAzw.jpeg",
+    "description": "For opening the nuts, you need to use the wrenches. Wrenches are available in various models.",
+    "order_quantity": 7,
+    "available_quantity": 77,
+    "price": 45
+  },
+  {
+    "name": "Ratchet",
+    "img": "https://miro.medium.com/max/1400/1*3meuSNZMrTl_8O6x_kfOqA.jpeg",
+    "description": "A ratchet consist of bar or wheel with a set of angled teeth that fits into the tooth allowing the movement in any one direction.",
+    "order_quantity": 1,
+    "available_quantity": 88,
+    "price": 120
+  },
+  {
+    "name": "Wire strippers and Cutters",
+    "img": "https://miro.medium.com/max/1400/1*yvlTyjOijYH4hhAzPLvfGg.jpeg",
+    "description": "There are the wire strippers that come in diameters of different sizes. ",
+    "order_quantity": 5,
+    "available_quantity": 102,
+    "price": 38
+  },
+  {
+    "name": "Nut Drivers",
+    "img": "https://miro.medium.com/max/1400/1*OiDqd-YYAfsD66pRnGu8Og.png",
+    "description": "There are the nut drivers and they are used for nuts in the same manner as the screw drivers are used for the screws.",
+    "order_quantity": 3,
+    "available_quantity": 98,
+    "price": 32
+  },
+  {
+    "name": "Quick change Chuck in air hammer",
+    "img": "https://miro.medium.com/max/1400/1*NfGJYq1jq7Lv-KTpF9OEyA.jpeg",
+    "description": "If you have to change the air hammer then in that case you will find that you are wasting a lot of energy while changing. ",
+    "order_quantity": 4,
+    "available_quantity": 66,
+    "price": 124
+  },
+  {
+    "name": "Greasing guns",
+    "img": "https://miro.medium.com/max/1400/1*GCMlA7G2H2bDnQ40kqQ7iw.jpeg",
+    "description": "Similarly there are the greasing guns and the glue guns. You can easily understand how good the greasing guns are and how useful they can be.",
+    "order_quantity": 2,
+    "available_quantity": 90,
+    "price": 134
+  },
+  {
+    "name": "Cutting tools",
+    "img": "https://miro.medium.com/max/1400/1*ZFDFF2pNJj6d6a197_tPdA.jpeg",
+    "description": "For cutting there are the tools like cutting knifes and the wire strippers.",
+    "order_quantity": 1,
+    "available_quantity": 96,
+    "price": 43
+  }
+]
