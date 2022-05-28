@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import SignUp from './components/Login/SignUp';
+import Purchase from './components/Purchase/Purchase';
 import RequireAuth from './components/REquireAuth';
 import Footer from './components/Shared/Footer';
 import Navbar from './components/Shared/Navbar/Navbar';
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+          <Route path='/purchase' element={<RequireAuth><Purchase/></RequireAuth>}></Route>
           <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
             <Route path='addproduct' element={<AddProducts/>}></Route>
           </Route>
