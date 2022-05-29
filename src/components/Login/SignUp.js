@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import {
-    useCreateUserWithEmailAndPassword,
-    useSignInWithGoogle,
-    useUpdateProfile
+  useCreateUserWithEmailAndPassword,
+  useSendEmailVerification,
+  useSignInWithGoogle,
+  useUpdateProfile
 } from "react-firebase-hooks/auth";
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
@@ -13,6 +15,9 @@ const SignUp = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [updateProfile, updating, error1] = useUpdateProfile(auth);
     const navigate = useNavigate();
+    const [sendEmailVerification, sending] = useSendEmailVerification(
+      auth
+    );
     const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
@@ -25,13 +30,15 @@ const SignUp = () => {
     console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({displayName:data.name})
+    await sendEmailVerification()
+    toast('sent email verification',{id:'sent'})
     };
     useEffect(()=>{
      if (user || gUser) {
        navigate("/");
      }
     },[user,gUser,navigate])
-  if (loading || updating || gLoading) {
+  if (loading || updating || gLoading || sending) {
     return <Loading />;
   }
   let signInError;
@@ -150,7 +157,7 @@ const SignUp = () => {
               </Link>
             </small>
           </p>
-          <SocialLogin signInWithGoogle={signInWithGoogle}/>
+          <SocialLogin sendEmailVerification={sendEmailVerification} signInWithGoogle={signInWithGoogle}/>
         </div>
       </div>
     </div>

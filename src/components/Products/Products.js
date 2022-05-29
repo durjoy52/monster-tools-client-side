@@ -10,7 +10,7 @@ const Products = () => {
       return <Loading/>
   }
     return (
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-3'>
+        <div id='products' className='grid lg:grid-cols-3 md:grid-cols-2 gap-3'>
            {
                data.map(product=><Product key={product._id} product={product}></Product>)
            }

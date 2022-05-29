@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendEmailVerification, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -11,6 +11,9 @@ const Login = () => {
   const navigate = useNavigate()
   const from = location.state?.from?.pathname || '/'
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [sendEmailVerification, sending] = useSendEmailVerification(
+    auth
+  );
   const [
     signInWithEmailAndPassword,
     user,
@@ -27,7 +30,7 @@ const Login = () => {
       navigate(from,{replace:true})
      }
   },[user,gUser,navigate,from])
-  if(loading || gLoading){
+  if(loading || gLoading || sending){
     return <Loading/>
   }
   let signInError;
@@ -94,7 +97,7 @@ const Login = () => {
                 <input className='btn btn-primary w-full max-w-xs text-white' type="submit" value="Login" />
             </form>
             <p><small>New to Monster Tools? <Link className='text-primary' to="/signup">Create New Account</Link></small></p>
-            <SocialLogin signInWithGoogle={signInWithGoogle}/>
+            <SocialLogin sendEmailVerification={sendEmailVerification} signInWithGoogle={signInWithGoogle}/>
         </div>
     </div>
 </div >
