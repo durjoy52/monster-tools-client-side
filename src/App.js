@@ -4,7 +4,10 @@ import NotFound from '../src/components/NotFound/NotFound';
 import './App.css';
 import Blogs from './components/Blogs/Blogs';
 import AddProducts from './components/Dashboard/AddProducts';
+import AddReview from './components/Dashboard/AddReview';
 import Dashboard from './components/Dashboard/Dashboard';
+import EditProfile from './components/Dashboard/EditProfile';
+import MyProfile from './components/Dashboard/MyProfile';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import SignUp from './components/Login/SignUp';
@@ -23,6 +26,9 @@ function App() {
           <Route path='/purchase/:id' element={<RequireAuth><Purchase/></RequireAuth>}></Route>
           <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
             <Route path='addproduct' element={<AddProducts/>}></Route>
+            <Route path='addreview' element={<AddReview/>}></Route>
+            <Route path='myprofile' element={<MyProfile/>}></Route>
+            <Route path='editprofile' element={<EditProfile/>}></Route>
           </Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/signup' element={<SignUp></SignUp>}></Route>

@@ -19,10 +19,23 @@ const Purchase = () => {
         const name = event.target.name.value;
         const email =event.target.email.value;
         const phone =event.target.phone.value
-        const orderQuantity = event.target.orderQuantity.value;
+        const address =event.target.address.value
         if( product?.available_quantity < orderQuantity || orderQuantity < product?.minimum ){
             return
         }
+        const order = {userName,name,phone,orderQuantity,email,address}
+            fetch('http://localhost:5000/orders',{
+                method:"POST",
+                headers:{
+                    'content-type':'application/json'
+                },
+                body:JSON.stringify(order)
+            })
+            .then(res=>res.json())
+            .then(data =>{
+                console.log(data)
+                event.target.reset()
+            })
     }
     return (
         <div className='container mx-auto flex justify-evenly flex-col md:flex-row items-center md:h-screen gap-4'>
