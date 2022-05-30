@@ -9,13 +9,14 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../useToken';
 import Loading from '../Loading/Loading';
 import SocialLogin from './SocialLogin';
 const SignUp = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [updateProfile, updating, error1] = useUpdateProfile(auth);
     const navigate = useNavigate();
-    const [sendEmailVerification, sending] = useSendEmailVerification(
+    const [sendEmailVerification, sending,error2] = useSendEmailVerification(
       auth
     );
     const [createUserWithEmailAndPassword, user, loading, error] =
@@ -27,17 +28,18 @@ const SignUp = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({displayName:data.name})
-    await sendEmailVerification()
-    toast('sent email verification',{id:'sent'})
+    if(!error || !error2){
+      await sendEmailVerification()
+       toast('sent email verification',{id:'sent'})}
     };
+    const [token] = useToken(user || gUser)
     useEffect(()=>{
-     if (user || gUser) {
+     if (token) {
        navigate("/");
      }
-    },[user,gUser,navigate])
+    },[token,navigate])
   if (loading || updating || gLoading || sending) {
     return <Loading />;
   }

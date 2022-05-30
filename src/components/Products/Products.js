@@ -5,14 +5,20 @@ import Product from './Product';
 
 const Products = () => {
 
-  const {data,isLoading} = useQuery('products',()=> fetch('http://localhost:5000/products').then(res=>res.json()))
+  const {data,isLoading} = useQuery('products',()=> fetch('http://localhost:5000/products',{
+    method:'GET',
+    headers:{
+      'content-type':'application/json',
+      'authorization':`Bearer ${localStorage.getItem('accessToken')}`
+    }
+  }).then(res=>res.json()))
   if(isLoading){
       return <Loading/>
   }
     return (
         <div id='products' className='grid lg:grid-cols-3 md:grid-cols-2 gap-3'>
            {
-               data.map(product=><Product key={product._id} product={product}></Product>)
+               data?.map(product=><Product key={product._id} product={product}></Product>)
            }
         </div>
     );

@@ -9,10 +9,12 @@ import Dashboard from './components/Dashboard/Dashboard';
 import EditProfile from './components/Dashboard/EditProfile';
 import MyOrders from './components/Dashboard/MyOrders';
 import MyProfile from './components/Dashboard/MyProfile';
+import Users from './components/Dashboard/Users';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import SignUp from './components/Login/SignUp';
 import Purchase from './components/Purchase/Purchase';
+import RequireAdmin from './components/RequireAdmin';
 import RequireAuth from './components/REquireAuth';
 import Footer from './components/Shared/Footer';
 import Navbar from './components/Shared/Navbar/Navbar';
@@ -31,6 +33,7 @@ function App() {
             <Route path='myprofile' element={<MyProfile/>}></Route>
             <Route path='myorders' element={<MyOrders/>}></Route>
             <Route path='editprofile' element={<EditProfile/>}></Route>
+            <Route path='users' element={<RequireAdmin><Users/></RequireAdmin>}></Route>
           </Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/signup' element={<SignUp></SignUp>}></Route>

@@ -46,20 +46,20 @@ const EditProfile = () => {
                phone:data.phone,
                photoURL:photoURL
            }
-           fetch('http://localhost:5000/userProfile',{
-               method:"POST",
+           fetch(`http://localhost:5000/userProfile/${user?.email}`,{
+               method:"PUT",
                headers:{
                    'content-type':'application/json',
                },
                body:JSON.stringify(profile)
            }).then(res=>res.json())
            .then(data =>{
-               if(data.insertedId){
-                   toast.success('profile update successfully',{id:'err'})
-               }else{
-                   toast.error('failed to update profile',{id:'err'})
-               }
-               reset()
+             if(data.modifiedCount){
+               toast.success('profile update successfully',{id:'err'})
+              }else{
+                toast.error('failed to update profile',{id:'err'})
+              }
+              reset()
            })
        }
       });

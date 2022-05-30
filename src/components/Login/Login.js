@@ -3,6 +3,7 @@ import { useSendEmailVerification, useSignInWithEmailAndPassword, useSignInWithG
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../useToken';
 import Loading from '../Loading/Loading';
 import SocialLogin from './SocialLogin';
 
@@ -25,11 +26,12 @@ const Login = () => {
     console.log(data)
     signInWithEmailAndPassword(data.email,data.password)
   };
+  const [token] = useToken(user || gUser)
   useEffect(()=>{
-    if (user || gUser) {
+    if (token) {
       navigate(from,{replace:true})
      }
-  },[user,gUser,navigate,from])
+  },[token,navigate,from])
   if(loading || gLoading || sending){
     return <Loading/>
   }

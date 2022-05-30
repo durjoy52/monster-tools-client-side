@@ -11,7 +11,7 @@ const AddReview = () => {
         const reviewText = event.target.reviewText.value
         const userName = user?.displayName;
         const userImg = user?.photoURL
-        fetch('http://localhost:5000/review',{
+        fetch('http://localhost:5000/reviews',{
             method:"POST",
             headers:{
                 'content-type':'application/json'

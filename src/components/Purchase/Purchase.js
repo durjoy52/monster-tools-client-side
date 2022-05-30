@@ -8,7 +8,13 @@ import Loading from '../Loading/Loading';
 const Purchase = () => {
     const {id} = useParams()
     const [user,loading] = useAuthState(auth)
-    const {data:product,reset} = useQuery('purchase',()=>fetch(`http://localhost:5000/products/${id}`).then(res=>res.json()))
+    const {data:product} = useQuery('purchase',()=>fetch(`http://localhost:5000/products/${id}`,{
+      method:'GET',
+      headers:{
+        'content-type':'application/json',
+        'authorization':`Bearer ${localStorage.getItem('accessToken')}`
+      }
+    }).then(res=>res.json()))
     const [orderQuantity,setOrderQuantity] = useState(null)
     if(loading){
         return<Loading/>
@@ -26,8 +32,8 @@ const Purchase = () => {
             return
         }
         const order = {userName,name,phone,orderQuantity,email,address,totalPrice,pricePerUnit}
-            fetch('http://localhost:5000/orders',{
-                method:"POST",
+            fetch(`http://localhost:5000/orders/${email}`,{
+                method:"PUT",
                 headers:{
                     'content-type':'application/json'
                 },
@@ -36,16 +42,7 @@ const Purchase = () => {
             .then(res=>res.json())
             .then(data =>{
                 console.log(data)
-                if(data.insertedId){
-                    fetch('http://localhost:5000/orders',{
-                        method:'PUT',
-                        headers:{
-                        "content-type": "application/json"
-                        },
-                        body:JSON.stringify({available_quantity:parseInt(product?.available_quantity) - parseInt(orderQuantity)})
-                    })
-                }
-                reset()
+                event.target.reset()
             })
             
     }

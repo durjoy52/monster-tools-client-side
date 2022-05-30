@@ -1,13 +1,21 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
+import auth from '../../firebase.init';
 
 const MyOrders = () => {
-    const {data:orders} = useQuery('myOrders',()=> fetch('http://localhost:5000/orders').then(res=>res.json()))
-    console.log(orders)
+  const [user]= useAuthState(auth)
+    const {data:orders} = useQuery('myOrders',()=> fetch(`http://localhost:5000/orders/${user?.email}`,{
+      method:'GET',
+      headers:{
+        'content-type':'application/json',
+        'authorization':`Bearer ${localStorage.getItem('accessToken')}`
+      }
+    }).then(res=>res.json()))
     return (
         <div>
-            <div class="overflow-x-auto">
-  <table class="table w-full">
+            <div className="overflow-x-auto">
+  <table className="table w-full">
     {/* <!-- head --> */}
     <thead>
       <tr>
