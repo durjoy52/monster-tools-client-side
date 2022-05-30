@@ -8,11 +8,13 @@ import Loading from '../Loading/Loading';
 const Purchase = () => {
     const {id} = useParams()
     const [user,loading] = useAuthState(auth)
-    const {data:product} = useQuery('purchase',()=>fetch(`http://localhost:5000/products/${id}`).then(res=>res.json()))
+    const {data:product,reset} = useQuery('purchase',()=>fetch(`http://localhost:5000/products/${id}`).then(res=>res.json()))
     const [orderQuantity,setOrderQuantity] = useState(null)
     if(loading){
         return<Loading/>
     }
+    const pricePerUnit =product?.price
+    const totalPrice = parseInt(orderQuantity) * parseInt(pricePerUnit)
     const handleSubmit = event =>{
         event.preventDefault()
         const userName = event.target.userName.value
@@ -23,7 +25,7 @@ const Purchase = () => {
         if( product?.available_quantity < orderQuantity || orderQuantity < product?.minimum ){
             return
         }
-        const order = {userName,name,phone,orderQuantity,email,address}
+        const order = {userName,name,phone,orderQuantity,email,address,totalPrice,pricePerUnit}
             fetch('http://localhost:5000/orders',{
                 method:"POST",
                 headers:{
@@ -34,8 +36,18 @@ const Purchase = () => {
             .then(res=>res.json())
             .then(data =>{
                 console.log(data)
-                event.target.reset()
+                if(data.insertedId){
+                    fetch('http://localhost:5000/orders',{
+                        method:'PUT',
+                        headers:{
+                        "content-type": "application/json"
+                        },
+                        body:JSON.stringify({available_quantity:parseInt(product?.available_quantity) - parseInt(orderQuantity)})
+                    })
+                }
+                reset()
             })
+            
     }
     return (
         <div className='container mx-auto flex justify-evenly flex-col md:flex-row items-center md:h-screen gap-4'>
@@ -56,7 +68,7 @@ const Purchase = () => {
       <h2 className="text-center font-bold">Purchase now: <span className='text-purple-500'>{product?.name}</span></h2>
     <form onSubmit={handleSubmit} className='grid grid-cols-1 gap-3 justify-items-center mt-2'>
         <input name='userName' className="input input-bordered w-full max-w-xs" type="text" value={user?.displayName} disabled/>
-        <input name='name' className="input input-bordered w-full max-w-xs" type="text" value={`Product: ${product?.name}`} disabled/>
+        <input name='name' className="input input-bordered w-full max-w-xs" type="text" value={product?.name} disabled/>
         <input className="input input-bordered w-full max-w-xs" type="text" name='email' value={user?.email} disabled/>
         <input type="text" name='address' placeholder='your address' className="input input-bordered w-full max-w-xs" required/>
         <input className="input input-bordered w-full max-w-xs" type="text" name='phone' placeholder='phone number' />

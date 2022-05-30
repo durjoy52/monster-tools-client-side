@@ -7,6 +7,7 @@ import AddProducts from './components/Dashboard/AddProducts';
 import AddReview from './components/Dashboard/AddReview';
 import Dashboard from './components/Dashboard/Dashboard';
 import EditProfile from './components/Dashboard/EditProfile';
+import MyOrders from './components/Dashboard/MyOrders';
 import MyProfile from './components/Dashboard/MyProfile';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
@@ -28,6 +29,7 @@ function App() {
             <Route path='addproduct' element={<AddProducts/>}></Route>
             <Route path='addreview' element={<AddReview/>}></Route>
             <Route path='myprofile' element={<MyProfile/>}></Route>
+            <Route path='myorders' element={<MyOrders/>}></Route>
             <Route path='editprofile' element={<EditProfile/>}></Route>
           </Route>
           <Route path='/login' element={<Login></Login>}></Route>

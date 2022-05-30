@@ -30,7 +30,7 @@ const [profile,setProfile] = useState({})
     <p>your education:{profile?.education}</p>
     <p>your location:{profile?.location}</p>
     <p>your phone number:{profile?.phone}</p>
-    <p>your Linkedin-Link: <Link to={profile?.linkedin} className="btn btn-active btn-link">{profile?.linkedin}</Link></p>
+    <p>your Linkedin-Link: <a href={profile?.linkedin} className="btn btn-active btn-link">{profile?.linkedin}</a></p>
     <div className="card-actions justify-end">
       <Link to='/dashboard/editprofile' className="btn btn-primary">Edit your profile</Link>
     </div>
