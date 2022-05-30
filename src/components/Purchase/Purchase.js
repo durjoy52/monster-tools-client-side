@@ -39,10 +39,10 @@ const Purchase = () => {
     }
     return (
         <div className='container mx-auto flex justify-evenly flex-col md:flex-row items-center md:h-screen gap-4'>
-            <div class="card rounded-none card-compact w-80 lg:w-96 bg-base-100 shadow-xl">
+            <div className="card rounded-none card-compact w-80 lg:w-96 bg-base-100 shadow-xl">
   <figure><img src={product?.img} alt={product?.name} /></figure>
-  <div class="card-body">
-    <h2 class="card-title">{product?.name}</h2>
+  <div className="card-body">
+    <h2 className="card-title">{product?.name}</h2>
     <p>{product?.description}</p>
     <div className='flex justify-between'>
         <p>Minimum-Order: {product?.minimum}</p>
@@ -60,7 +60,7 @@ const Purchase = () => {
         <input className="input input-bordered w-full max-w-xs" type="text" name='email' value={user?.email} disabled/>
         <input type="text" name='address' placeholder='your address' className="input input-bordered w-full max-w-xs" required/>
         <input className="input input-bordered w-full max-w-xs" type="text" name='phone' placeholder='phone number' />
-        <input onChange={(e)=>setOrderQuantity(e.target.value)} type="number" name='orderQuantity' placeholder="order quantity" class="input input-bordered input-sm w-full max-w-xs" min={1} max={product?.available_quantity} required />
+        <input onChange={(e)=>setOrderQuantity(e.target.value)} type="number" name='orderQuantity' placeholder="order quantity" className="input input-bordered input-sm w-full max-w-xs" min={1} max={product?.available_quantity} required />
         {
             (orderQuantity < product?.minimum) && <span className='text-red-500 text-left'><small>Minimum order quantity {product?.minimum} is required</small></span>
         }

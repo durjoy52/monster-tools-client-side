@@ -26,16 +26,16 @@ const AddReview = () => {
     }
     return (
         <div className='container mx-auto flex justify-center'>
-            <div class="card max-w-xs bg-base-100 shadow-xl">
-  <div class="card-body">
-    <h2 class="card-title">Add a feedback or review</h2>
+            <div className="card max-w-xs bg-base-100 shadow-xl">
+  <div className="card-body">
+    <h2 className="card-title">Add a feedback or review</h2>
    <form onSubmit={handleReview}>
-   <div class="rating rating-md">
-  <input type="radio" name="rating" class="mask mask-star-2 bg-orange-400" value={1} />
-  <input type="radio" name="rating" class="mask mask-star-2 bg-orange-400" value={2} />
-  <input type="radio" name="rating" class="mask mask-star-2 bg-orange-400" value={3} />
-  <input type="radio" name="rating" class="mask mask-star-2 bg-orange-400" value={4} defaultChecked />
-  <input type="radio" name="rating" class="mask mask-star-2 bg-orange-400" value={5} />
+   <div className="rating rating-md">
+  <input type="radio" name="rating" className="mask mask-star-2 bg-orange-400" value={1} />
+  <input type="radio" name="rating" className="mask mask-star-2 bg-orange-400" value={2} />
+  <input type="radio" name="rating" className="mask mask-star-2 bg-orange-400" value={3} />
+  <input type="radio" name="rating" className="mask mask-star-2 bg-orange-400" value={4} defaultChecked />
+  <input type="radio" name="rating" className="mask mask-star-2 bg-orange-400" value={5} />
 </div>
     <textarea name="reviewText" className='textarea textarea-primary w-full' ></textarea>
    <div className="card-actions justify-end">
