@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
-import auth from '../../firebase.init';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 
-const MyOrders = () => {
-  const [deletingProduct,setDeletingProduct] = useState(null)
-  const [user]= useAuthState(auth)
-    const {data:orders,refetch} = useQuery('myOrders',()=> fetch(`http://localhost:5000/orders/${user?.email}`,{
+const AllOrders = () => {
+    const [deletingProduct,setDeletingProduct] = useState(null)
+    const {data:orders,refetch} = useQuery('myOrders',()=> fetch(`http://localhost:5000/orders`,{
       method:'GET',
       headers:{
         'content-type':'application/json',
@@ -46,7 +42,6 @@ const MyOrders = () => {
         <th>Quantity</th>
         <th>Per Unit Price</th>
         <th>Total Price</th>
-        <th>Payment</th>
         <th>Cancel Order</th>
       </tr>
     </thead>
@@ -58,14 +53,6 @@ const MyOrders = () => {
                 <td>{order.orderQuantity}</td>
                 <td>{order.pricePerUnit}</td>
                 <td>$ {order.totalPrice}</td>
-                <td>
-                  {
-                    !order.paid && <Link to={`/dashboard/payment/${order._id}`}  className="btn btn-xs btn-success ">Pay</Link>
-                  }
-                  {
-                    order.paid && <span className="text-success">Paid</span>
-                  }
-                </td>
                 <td><label onClick={()=>setDeletingProduct(order)} htmlFor="my-modal" className="btn btn-xs ">Cancel</label></td>
               </tr>)
         }
@@ -79,4 +66,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default AllOrders;

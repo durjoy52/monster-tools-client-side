@@ -28,13 +28,14 @@ const EditProfile = () => {
       const photoURL = data.photoURL[0];
       formData.append("image", photoURL);
       const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+      toast('please wait',{id:'id'})
       fetch(url,{
           method:'POST',
           body:formData
         })
         .then(res=>res.json())
         .then(result=>{
-            if(result.success){
+          if(result.success){
                 const photoURL = result.data.url
                 updateProfile({displayName,photoURL})
            const profile = {
@@ -54,12 +55,13 @@ const EditProfile = () => {
                body:JSON.stringify(profile)
            }).then(res=>res.json())
            .then(data =>{
-             if(data.modifiedCount){
+             console.log(data)
+             if(data.modifiedCount > 0 ){
                toast.success('profile update successfully',{id:'err'})
+               reset()
               }else{
                 toast.error('failed to update profile',{id:'err'})
               }
-              reset()
            })
        }
       });

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import {
-  useCreateUserWithEmailAndPassword,
-  useSendEmailVerification,
-  useSignInWithGoogle,
-  useUpdateProfile
+    useCreateUserWithEmailAndPassword,
+    useSendEmailVerification,
+    useSignInWithGoogle,
+    useUpdateProfile
 } from "react-firebase-hooks/auth";
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';

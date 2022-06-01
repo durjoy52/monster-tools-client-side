@@ -13,6 +13,7 @@ const Navbar = ({children}) => {
   };
   const menuItems = <>
    <li><NavLink to='/'>Home</NavLink></li>
+   <li><NavLink to='/allproducts'>All products</NavLink></li>
           {
             user?<li><NavLink onClick={logout} to='/login'>Sign Out</NavLink></li>:<li><NavLink to='/login'>Login</NavLink></li>
           }

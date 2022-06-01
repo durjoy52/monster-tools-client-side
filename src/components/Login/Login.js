@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSendEmailVerification, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useToken from '../../useToken';
@@ -30,6 +31,7 @@ const Login = () => {
   useEffect(()=>{
     if (token) {
       navigate(from,{replace:true})
+      toast.success('you ar sign in now',{id:'sign'})
      }
   },[token,navigate,from])
   if(loading || gLoading || sending){
