@@ -47,7 +47,6 @@ const MyOrders = () => {
         <th>Per Unit Price</th>
         <th>Total Price</th>
         <th>Payment</th>
-        <th>Payment</th>
       </tr>
     </thead>
     <tbody>
