@@ -1,10 +1,10 @@
-import React from 'react';
+
 import developer from '../../assets/developer.jpg';
 import developer1 from '../../assets/developer1.jpg';
 import manager from '../../assets/manager.jpg';
 const TeamMember = () => {
     return (
-        <div className='mb-6'>
+        <div className='mb-6' id='start'>
             <div className="text-center mb-3">
                 <h2 className='text-3xl text-red-600 uppercase'>our team</h2>
                 <h2 className='text-2xl uppercase font-bold'>Our dedicated team member</h2>

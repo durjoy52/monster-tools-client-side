@@ -47,7 +47,7 @@ const EditProfile = () => {
                phone:data.phone,
                photoURL:photoURL
            }
-           fetch(`http://localhost:5000/userProfile/${user?.email}`,{
+           fetch(`https://dry-reef-40220.herokuapp.com/userProfile/${user?.email}`,{
                method:"PUT",
                headers:{
                    'content-type':'application/json',

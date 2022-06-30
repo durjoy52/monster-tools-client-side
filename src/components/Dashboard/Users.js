@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
 import Loading from '../Loading/Loading';
+import DeleteConfirmUser from './DeleteConfirmUser';
 
 const Users = () => {
-    const {data:users,isLoading,refetch} = useQuery('allUsers',()=>fetch(`http://localhost:5000/users`,{
+    const [deletingUser,setDeletingUser] = useState(null)
+    const {data:users,isLoading,refetch} = useQuery('allUsers',()=>fetch(`https://dry-reef-40220.herokuapp.com/users`,{
         method:'GET',
         headers:{
             'content-type':'application/json',
@@ -15,7 +17,7 @@ const Users = () => {
         return <Loading/>
     }
     const makeAdmin =(email)=>{
-        fetch(`http://localhost:5000/users/admin/${email}`,{
+        fetch(`https://dry-reef-40220.herokuapp.com/users/admin/${email}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json',
@@ -36,7 +38,7 @@ const Users = () => {
         })
     }
     const deleteAdmin =(email)=>{
-        fetch(`http://localhost:5000/user/${email}`,{
+        fetch(`https://dry-reef-40220.herokuapp.com/user/${email}`,{
             method:'DELETE',
             headers:{
             'authorization':`Bearer ${localStorage.getItem('accessToken')}`
@@ -44,8 +46,9 @@ const Users = () => {
         }).then(res=>res.json())
         .then(data=>{
             console.log(data)
-            if(data.modifiedCount){
-                toast.success('successfully Deleted an admin',{id:'set'})
+            if(data.deletedCount > 0){
+                setDeletingUser(null)
+                toast.success('successfully Deleted an User',{id:'set'})
                 refetch()
             }
         })
@@ -77,13 +80,18 @@ const Users = () => {
                     }
                 </td>
                     <td>
-                        {user.role !== 'admin' && <button onClick={()=>deleteAdmin(user.email)} className='btn btn-error  btn-xs'>Remove User</button>}
+                        {
+                        user.role !== 'admin' && <label onClick={()=>setDeletingUser(user)} htmlFor="my-modal" className="btn btn-xs btn-error">Remove User</label>
+                        }
                     </td>
               </tr>)
         }
     </tbody>
   </table>
 </div>
+{
+    deletingUser && <DeleteConfirmUser deletingUser={deletingUser} deleteAdmin={deleteAdmin}></DeleteConfirmUser>
+}
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
@@ -9,7 +9,7 @@ import DeleteConfirmationModal from './DeleteConfirmationModal';
 const MyOrders = () => {
   const [deletingProduct,setDeletingProduct] = useState(null)
   const [user]= useAuthState(auth)
-    const {data:orders,refetch} = useQuery('myOrders',()=> fetch(`http://localhost:5000/orders/${user?.email}`,{
+    const {data:orders,refetch} = useQuery('myOrders',()=> fetch(`https://dry-reef-40220.herokuapp.com/orders/${user?.email}`,{
       method:'GET',
       headers:{
         'content-type':'application/json',
@@ -18,7 +18,7 @@ const MyOrders = () => {
     }).then(res=>res.json()))
     const handleDelete = id =>{
 
-      fetch(`http://localhost:5000/order/${id}`,{
+      fetch(`https://dry-reef-40220.herokuapp.com/order/${id}`,{
           method:'DELETE',
           headers:{
           'authorization':`Bearer ${localStorage.getItem('accessToken')}`
@@ -47,7 +47,6 @@ const MyOrders = () => {
         <th>Per Unit Price</th>
         <th>Total Price</th>
         <th>Payment</th>
-        <th>Cancel Order</th>
       </tr>
     </thead>
     <tbody>
@@ -63,10 +62,17 @@ const MyOrders = () => {
                     !order.paid && <Link to={`/dashboard/payment/${order._id}`}  className="btn btn-xs btn-success ">Pay</Link>
                   }
                   {
-                    order.paid && <span className="text-success">Paid</span>
+                    order.paid && <p>
+                      <span className="text-success">Paid</span>
+                      <p className='text-emerald-600'>Transaction Id: <span className='text-orange-500'>{order._id}</span></p>
+                    </p>
                   }
                 </td>
-                <td><label onClick={()=>setDeletingProduct(order)} htmlFor="my-modal" className="btn btn-xs ">Cancel</label></td>
+                <td>
+                  {
+                    !order.paid && <label onClick={()=>setDeletingProduct(order)} htmlFor="my-modal" className="btn btn-xs ">Cancel</label>
+                  }
+                </td>
               </tr>)
         }
     </tbody>

@@ -1,4 +1,3 @@
-import React from 'react';
 import CountUp from 'react-countup';
 import { FaStarHalfAlt, FaTools } from 'react-icons/fa';
 import { FiDollarSign } from 'react-icons/fi';

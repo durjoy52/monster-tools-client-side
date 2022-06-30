@@ -12,7 +12,7 @@ const CheckoutForm = ({product}) => {
 
     const {totalPrice,email,displayName,_id} = product
     useEffect(()=>{
-        fetch('http://localhost:5000/create-payment-intent',{
+        fetch('https://dry-reef-40220.herokuapp.com/create-payment-intent',{
             method:'POST',
             headers:{
                 'content-type':'application/json',
@@ -70,7 +70,7 @@ if(data?.clientSecret){
                           transactionId:paymentIntent.id
                       }
 
-                      fetch(`http://localhost:5000/order/${_id}`,{
+                      fetch(`https://dry-reef-40220.herokuapp.com/order/${_id}`,{
                           method:'PATCH',
                           headers:{
                             'content-type':'application/json',

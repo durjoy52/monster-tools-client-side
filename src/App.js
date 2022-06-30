@@ -26,7 +26,6 @@ function App() {
   return (
     <>
       <Navbar>
-      <Toaster />
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/blogs' element={<Blogs></Blogs>}></Route>
@@ -35,7 +34,8 @@ function App() {
           <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
             <Route path='addproduct' element={<RequireAdmin><AddProducts/></RequireAdmin>}></Route>
             <Route path='addreview' index element={<AddReview/>}></Route>
-            <Route path='myprofile' element={<MyProfile/>}></Route>
+            <Route index element={<MyProfile/>}></Route>
+            <Route index path='myprofile' element={<MyProfile/>}></Route>
             <Route path='myorders' element={<MyOrders/>}></Route>
             <Route path='payment/:id' element={<Payment/>}></Route>
             <Route path='editprofile' element={<EditProfile/>}></Route>
@@ -49,6 +49,7 @@ function App() {
         </Routes>
         <Footer/>
       </Navbar>
+      <Toaster />
     </>
   );
 }

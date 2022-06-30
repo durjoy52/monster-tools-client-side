@@ -1,7 +1,6 @@
-import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { MdRateReview } from 'react-icons/md';
 import auth from '../../firebase.init';
-
 const AddReview = () => {
     const [user] = useAuthState(auth)
     console.log(user)
@@ -11,7 +10,7 @@ const AddReview = () => {
         const reviewText = event.target.reviewText.value
         const userName = user?.displayName;
         const userImg = user?.photoURL
-        fetch('http://localhost:5000/reviews',{
+        fetch('https://dry-reef-40220.herokuapp.com/reviews',{
             method:"POST",
             headers:{
                 'content-type':'application/json',
@@ -40,7 +39,7 @@ const AddReview = () => {
 </div>
     <textarea name="reviewText" className='textarea textarea-primary w-full' ></textarea>
    <div className="card-actions justify-end">
-   <input type="submit" className='btn btn-primary' value="Add review" />
+   <button type="submit" className='btn btn-success text-white'><MdRateReview fontSize={20}/>Add Review</button>
    </div>
    </form>
   </div>

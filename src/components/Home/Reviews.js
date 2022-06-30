@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Loading from "../Loading/Loading";
 import './styles.css';
 const Reviews = () => {
-  const {data:reviews,isLoading} = useQuery('review',()=>fetch('http://localhost:5000/review',{
+  const {data:reviews,isLoading} = useQuery('review',()=>fetch('https://dry-reef-40220.herokuapp.com/review',{
     method:'GET',
     headers:{
       'content-type':'application/json',

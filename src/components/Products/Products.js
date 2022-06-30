@@ -1,12 +1,13 @@
-import React from 'react';
+
+import { MdArrowRight } from 'react-icons/md';
 import { useQuery } from 'react-query';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 import Product from './Product';
-
-const Products = () => {
+const Products = ({fade}) => {
 const {pathname} = useLocation()
-  const {data:products,isLoading,refetch} = useQuery('products',()=> fetch('http://localhost:5000/products').then(res=>res.json()))
+  const {data:products,isLoading,refetch} = useQuery('products',()=> fetch('https://dry-reef-40220.herokuapp.com/products').then(res=>res.json()))
+
   if(isLoading ||isLoading){
       return <Loading/>
   }
@@ -17,13 +18,19 @@ const {pathname} = useLocation()
     return (
         <div className="container mx-auto">
           {
-            !pathname.includes('/') && <h3 className='text-center text-3xl text-stone-600'>All Products</h3>
+            pathname.includes('/allproducts') && <h3 className='text-center text-3xl text-stone-600 mb-4 bg-red-200'>All Products</h3>
           }
-          <div id='products' className='grid lg:grid-cols-3 md:grid-cols-2 gap-3'>
+          <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-3'  id='products'>
            {
-               productCollection?.map(product=><Product refetch={refetch} key={product._id} product={product}></Product>)
+               productCollection?.map((product)=><Product refetch={refetch} key={product._id} product={product}></Product>)
            }
         </div>
+        {
+          !pathname.includes('/allproducts') && 
+          <div className="flex justify-end">
+        <Link to='/allproducts' className='btn btn-accent text-white'>More products<MdArrowRight fontSize={30}/></Link>
+        </div>
+        }
         </div>
     );
 };

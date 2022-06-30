@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
 import Loading from '../Loading/Loading';
@@ -6,14 +6,14 @@ import DeleteConfirmationModal from './DeleteConfirmationModal';
 
 const ManageProducts = () => {
     const [deletingProduct,setDeletingProduct] = useState(null)
-    const {data:products,isLoading,refetch} = useQuery('getproducts',()=>fetch('http://localhost:5000/products').then(res=>res.json()))
+    const {data:products,isLoading,refetch} = useQuery('getproducts',()=>fetch('https://dry-reef-40220.herokuapp.com/products').then(res=>res.json()))
     if(isLoading){
         return <Loading/>
     }
 
     const handleDelete = id =>{
 
-      fetch(`http://localhost:5000/product/${id}`,{
+      fetch(`https://dry-reef-40220.herokuapp.com/product/${id}`,{
           method:'DELETE',
           headers:{
           'authorization':`Bearer ${localStorage.getItem('accessToken')}`
@@ -31,8 +31,8 @@ const ManageProducts = () => {
   }
     return (
         <div>
-            <div className="overflow-x-auto">
-  <table className="table hover:overflow-scroll md:table-fixed">
+            <div>
+  <table className="table md:table-fixed ">
     {/* <!-- head --> */}
     <thead>
       <tr>
@@ -53,7 +53,7 @@ const ManageProducts = () => {
                 <td>{product.price}</td>
                 <td>{product.available_quantity}</td>
                 <td>{product.order_quantity}</td>
-                <td><label onClick={()=>setDeletingProduct(product)} for="my-modal" className="btn btn-xs btn-error">Remove</label></td>
+                <td><label onClick={()=>setDeletingProduct(product)} htmlFor="my-modal" className="btn btn-xs btn-error">Remove</label></td>
               </tr>)
         }
       

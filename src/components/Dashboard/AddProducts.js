@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { BsFillImageFill } from 'react-icons/bs';
@@ -34,7 +33,7 @@ const AddProducts = () => {
                    available_quantity:data.available_quantity,
                    price:data.price,
                }
-               fetch(`http://localhost:5000/products`,{
+               fetch(`https://dry-reef-40220.herokuapp.com/products`,{
                    method:"POST",
                    headers:{
                        'content-type':'application/json',
@@ -59,6 +58,7 @@ const AddProducts = () => {
           <h3 className="text-3xl text-center text-blue-600">
             Add Your Product
           </h3>
+          <div className="flex justify-center">
           <form onSubmit={handleSubmit(onsubmit)}>
             <div className="card-body w-80">
               <div className="form-control">
@@ -153,6 +153,7 @@ const AddProducts = () => {
               </div>
             </div>
           </form>
+          </div>
         </div>)
 };
 

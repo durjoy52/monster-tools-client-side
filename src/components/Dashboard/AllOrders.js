@@ -5,7 +5,7 @@ import DeleteConfirmationModal from './DeleteConfirmationModal';
 
 const AllOrders = () => {
     const [deletingProduct,setDeletingProduct] = useState(null)
-    const {data:orders,refetch} = useQuery('myOrders',()=> fetch(`http://localhost:5000/orders`,{
+    const {data:orders,refetch} = useQuery('myOrders',()=> fetch(`https://dry-reef-40220.herokuapp.com/orders`,{
       method:'GET',
       headers:{
         'content-type':'application/json',
@@ -14,7 +14,7 @@ const AllOrders = () => {
     }).then(res=>res.json()))
     const handleDelete = id =>{
 
-      fetch(`http://localhost:5000/order/${id}`,{
+      fetch(`https://dry-reef-40220.herokuapp.com/order/${id}`,{
           method:'DELETE',
           headers:{
           'authorization':`Bearer ${localStorage.getItem('accessToken')}`
@@ -30,6 +30,25 @@ const AllOrders = () => {
           }
       })
   }
+
+  const handleShip = (id) =>{
+    fetch(`https://dry-reef-40220.herokuapp.com/order/${id}`,{
+      method:'PUT',
+      headers:{
+        'content-type':'application/json',
+        'authorization':`Bearer ${localStorage.getItem('accessToken')}`
+      },
+      body:JSON.stringify({shipped:true})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+console.log(data)
+if(data.modifiedCount > 0){
+  refetch()
+  toast.success('Order delivered',{id:'ok'})
+}
+    })
+  }
     return (
         <div>
             <div className="overflow-x-auto">
@@ -42,6 +61,8 @@ const AllOrders = () => {
         <th>Quantity</th>
         <th>Per Unit Price</th>
         <th>Total Price</th>
+        <th>Payment</th>
+        <th>Shipping</th>
         <th>Cancel Order</th>
       </tr>
     </thead>
@@ -53,7 +74,28 @@ const AllOrders = () => {
                 <td>{order.orderQuantity}</td>
                 <td>{order.pricePerUnit}</td>
                 <td>$ {order.totalPrice}</td>
-                <td><label onClick={()=>setDeletingProduct(order)} htmlFor="my-modal" className="btn btn-xs ">Cancel</label></td>
+                <td>
+                  {
+                    !order.paid ? <p className="text-cyan-600">Unpaid</p>: <p className="text-success">paid</p>
+                  }
+                </td>
+                <td>
+                  {
+                   !order.shipped && order.paid && <>
+                   <span className="text-purple-600 pr-1">Pending</span>
+                   <label onClick={()=>handleShip(order._id)} className='btn btn-xs'>Ship</label>
+                   </>
+                  
+                  }
+                  {
+                    (order.paid && order.shipped) &&  <p className="text-emerald-800 font-bold">Shipped</p>
+                  }
+                </td>
+                <td>
+                  {
+                    !order.paid && <label onClick={()=>setDeletingProduct(order)} htmlFor="my-modal" className="btn btn-xs ">Cancel</label>
+                  }
+                </td>
               </tr>)
         }
     </tbody>
